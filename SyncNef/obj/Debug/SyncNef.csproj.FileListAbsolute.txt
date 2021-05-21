@@ -1,0 +1,6 @@
+D:\Dokumente\Programmieren\SyncNef\SyncNef\bin\Debug\SyncNef.exe
+D:\Dokumente\Programmieren\SyncNef\SyncNef\bin\Debug\SyncNef.pdb
+D:\Dokumente\Programmieren\SyncNef\SyncNef\obj\Debug\SyncNef.csprojAssemblyReference.cache
+D:\Dokumente\Programmieren\SyncNef\SyncNef\obj\Debug\SyncNef.csproj.CoreCompileInputs.cache
+D:\Dokumente\Programmieren\SyncNef\SyncNef\obj\Debug\SyncNef.exe
+D:\Dokumente\Programmieren\SyncNef\SyncNef\obj\Debug\SyncNef.pdb
