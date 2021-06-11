@@ -46,10 +46,12 @@ public class syncnef
         srcFiles = filter(srcFiles, jpgRegex.ToString());
         dstFiles = filter(dstFiles, nefRegex.ToString());
 
+        
         // Remove Ending of files (i.e. r1b2.jpg)
         srcFiles = srcFiles.Select(e => Regex.Replace(e, @"(?i)(?:[rb][0-9]*)*\.jpg", "")).ToList();
         dstFiles = dstFiles.Select(e => Regex.Replace(e, @"(?i)\.nef", "")).ToList();
 
+        
         // Compare both lists and determine files to delete + move file to dstPath/deleted 
         if (!Directory.Exists(dstPath + @"/deleted"))
         {
