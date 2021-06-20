@@ -12,6 +12,11 @@ public class syncnef
     private static Regex jpgRegex = new Regex(@"(?i)\.jpg$");
     private static Regex nefRegex = new Regex(@"(?i)\.nef$");
 
+    /// <summary>
+    /// Compares two destinations. In one are JPG files in the other are NEF files.
+    /// If a JPG file is deleted than the NEF files gets moved to a "deleted" subfolder of the second destination.
+    /// </summary>
+    /// <param name="args"> Command line Arguments. </param>
     public static void Main(string[] args)
     {
         //Assign relative or absolute paths
@@ -46,21 +51,22 @@ public class syncnef
         srcFiles = filter(srcFiles, jpgRegex.ToString());
         dstFiles = filter(dstFiles, nefRegex.ToString());
 
-        
+
         // Remove Ending of files (i.e. r1b2.jpg)
         srcFiles = srcFiles.Select(e => Regex.Replace(e, @"(?i)(?:[rb][0-9]*)*\.jpg", "")).ToList();
         dstFiles = dstFiles.Select(e => Regex.Replace(e, @"(?i)\.nef", "")).ToList();
 
-        
-        // Compare both lists and determine files to delete + move file to dstPath/deleted 
+
+        // Create deleted folder 
         if (!Directory.Exists(dstPath + @"/deleted"))
         {
             Directory.CreateDirectory(dstPath + @"/deleted");
         }
 
+        // Move unwanted files in deleted folder
         foreach (var dstFile in dstFiles)
         {
-            if (!srcFiles.Exists(e => e.Equals(dstFile)))
+            if (!srcFiles.Exists(e => e.Equals(dstFile))) // Compare to filtered list to avoid deleting other files
             {
                 var toDelete = origDstFiles.Find(e => e.Contains(dstFile));
                 File.Move(dstPath + $"/{toDelete}", dstPath + $"/deleted/{toDelete}");
@@ -68,6 +74,7 @@ public class syncnef
             }
         }
     }
+
 
     /// <summary>
     /// Filters out every file that does not match the given regex.
