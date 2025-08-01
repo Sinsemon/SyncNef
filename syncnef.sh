@@ -1,4 +1,8 @@
-#!/bin/bash
+#! /bin/bash
+
+# Installation in git bash for windows:
+# remove the file ending .sh from this file (otherwise the command in the shell would be syncnef.sh ...)
+# paste this file in <git intallation path>/usr/bin/
 
 #Syntax:
 # ./syncnef PathToJpgFolder PathToNefFolder
